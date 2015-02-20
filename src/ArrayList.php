@@ -27,6 +27,7 @@ class ArrayList
     } else {
       $node = new Node($value, $this->tail, NULL);
       $this->tail->setNext($node);
+      $this->tail = $node;
     }
 
     $this->size++;
