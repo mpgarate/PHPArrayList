@@ -7,11 +7,9 @@ class ArrayList
 
   private $size;
   private $elements;
-  private $modCount;
 
   function __construct()
   {
-    $this->modCount = 0;
     $this->size = 0;
     $this->elements = new SplFixedArray(self::DEFAULT_CAPACITY);
   }
