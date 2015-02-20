@@ -69,4 +69,19 @@ class StackTest extends PHPUnit_Framework_TestCase
 
     $this->assertEquals(0, $list->size());
   }
+
+  public function testRemoveAnItem()
+  {
+    $list = new ArrayList;
+    $list->add("First example message");
+    $list->add("Second example message");
+    $list->add("Third example message");
+
+    $message = $list->remove(1);
+
+    $this->assertEquals(2, $list->size());
+    $this->assertEquals("First example message", $list->get(0));
+    $this->assertEquals("Second example message", $message);
+    $this->assertEquals("Third example message", $list->get(2));
+  }
 }

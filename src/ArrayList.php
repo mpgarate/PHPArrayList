@@ -33,6 +33,25 @@ class ArrayList
     return $this->elements[$index];
   }
 
+  public function remove($index)
+  {
+    $oldElement = $this->elements[$index];
+
+    $numMoved = $this->size - $index - 1;
+
+    if ($numMoved > 0) {
+      for ($i = $index; $i < $this->size - 1; $i++) {
+        $this->elements[$i] = $this->elements[$i + 1];
+      }
+
+      $this->size--;
+      $this->elements[$this->size - 1] = NULL;
+
+      return $oldElement;
+    }
+
+  }
+
   public function clear()
   {
     $this->__construct();
