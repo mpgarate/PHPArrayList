@@ -2,14 +2,18 @@
 
 class ArrayList
 {
+  const DEFAULT_CAPACITY = 10;
+  const MAX_ARRAY_SIZE = PHP_INT_MAX;
+
   private $size;
-  private $head;
-  private $tail;
+  private $elements;
+  private $modCount;
 
   function __construct()
   {
+    $this->modCount = 0;
     $this->size = 0;
-    $this->head = NULL;
+    $this->elements = new SplFixedArray(self::DEFAULT_CAPACITY);
   }
 
   public function size()
@@ -17,34 +21,64 @@ class ArrayList
     return $this->size;
   }
 
-  public function add($value)
+  public function add($element)
   {
-    if (0 == $this->size) {
-      $node = new Node($value, NULL, NULL);
+    $size = $this->size;
 
-      $this->head = $node;
-      $this->tail = $this->head;
-    } else {
-      $node = new Node($value, $this->tail, NULL);
-      $this->tail->setNext($node);
-      $this->tail = $node;
-    }
-
+    $this->ensureCapacityInternal($size + 1);
+    $this->elements[$size] = $element;
     $this->size++;
   }
 
   public function get($index)
   {
-    $node = $this->head;
-
-    for($i = 0; $i < $index; $i++) {
-      $node = $node->getNext();
-    }
-
-    if (NULL == $node){
-      return NULL;
-    }
-
-    return $node->getValue();
+    return $this->elements[$index];
   }
+
+  public function clear()
+  {
+    $this->__construct();
+  }
+
+  private function ensureCapacityInternal($minCapacity)
+  {
+    if (0 == $this->elements->getSize())
+    {
+      $minCapacity = max(self::DEFAULT_CAPACITY, $minCapacity);
+    }
+
+    $this->ensureExplicitCapacity($minCapacity);
+  }
+
+  private function ensureExplicitCapacity($minCapacity)
+  {
+
+    if ($minCapacity - $this->elements->getSize() > 0) {
+      grow($minCapacity);
+    }
+  }
+
+  private function grow($minCapacity)
+  {
+    $oldCapacity = $this->elements->getSize();
+    $newCapacity = $oldCapacity + ($oldCapacity >> 1);
+
+    if ($newCapacity - $minCapacity < 0) {
+      $newCapacity = $minCapacity;
+    }
+
+    $elements = copyOfArray($elements, $newCapacity);
+  }
+
+  private function copyOfArray($oldArray, $newCapacity)
+  {
+    $newArray = new SplFixedArray($initialCapacity);
+
+    for ($i = 0; $i < $newCapacity; $i++) {
+      $newArray[$i] = $oldArray[$i];
+    }
+
+    return $newArray;
+  }
+
 }
