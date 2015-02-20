@@ -57,6 +57,34 @@ class StackTest extends PHPUnit_Framework_TestCase
     $this->assertEquals("Fourth example message", $list->get(3));
   }
 
+  public function testAddTenItems()
+  {
+    $list = new ArrayList;
+
+    for ($i = 0; $i < 10; $i++) {
+      $list->add("Example message " . $i);
+    }
+
+    $this->assertEquals(10, $list->size());
+    $this->assertEquals("Example message 0", $list->get(0));
+    $this->assertEquals("Example message 3", $list->get(3));
+    $this->assertEquals("Example message 9", $list->get(9));
+  }
+
+  public function testAddElevenItems()
+  {
+    $list = new ArrayList;
+
+    for ($i = 0; $i < 11; $i++) {
+      $list->add("Example message " . $i);
+    }
+
+    $this->assertEquals(11, $list->size());
+    $this->assertEquals("Example message 0", $list->get(0));
+    $this->assertEquals("Example message 3", $list->get(3));
+    $this->assertEquals("Example message 10", $list->get(10));
+  }
+
   public function testClearList()
   {
     $list = new ArrayList;

@@ -10,5 +10,5 @@ http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8-b132/ja
 ### Tests
 For tests, run:
 ```sh
-phpspec
+phpunit
 ```

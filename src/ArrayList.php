@@ -71,7 +71,7 @@ class ArrayList
   {
 
     if ($minCapacity - $this->elements->getSize() > 0) {
-      grow($minCapacity);
+      $this->grow($minCapacity);
     }
   }
 
@@ -84,14 +84,14 @@ class ArrayList
       $newCapacity = $minCapacity;
     }
 
-    $elements = copyOfArray($elements, $newCapacity);
+    $this->elements = $this->copyOfArray($this->elements, $newCapacity);
   }
 
   private function copyOfArray($oldArray, $newCapacity)
   {
-    $newArray = new SplFixedArray($initialCapacity);
+    $newArray = new SplFixedArray($newCapacity);
 
-    for ($i = 0; $i < $newCapacity; $i++) {
+    for ($i = 0; $i < $oldArray->getSize(); $i++) {
       $newArray[$i] = $oldArray[$i];
     }
 
