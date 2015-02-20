@@ -4,6 +4,7 @@ class ArrayList
 {
   private $size;
   private $head;
+  private $tail;
 
   function __construct()
   {
@@ -18,18 +19,24 @@ class ArrayList
 
   public function add($value)
   {
-    if (0 == $this->size)
-    {
-      $this->head = new Node($value, NULL);
-      $this->size++;
+    if (0 == $this->size) {
+      $node = new Node($value, NULL, NULL);
+
+      $this->head = $node;
+      $this->tail = $this->head;
+    } else {
+      $node = new Node($value, $this->tail, NULL);
+      $this->tail->setNext($node);
     }
+
+    $this->size++;
   }
 
   public function get($index)
   {
     $node = $this->head;
 
-    for($i = 0; $i < $index; $i++){
+    for($i = 0; $i < $index; $i++) {
       $node = $node->getNext();
     }
 
