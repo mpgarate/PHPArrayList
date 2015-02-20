@@ -2,8 +2,10 @@
 
 class ArrayList
 {
-  public function world()
+  private $size = 0;
+
+  public function size()
   {
-    return 'Hello world';
+    return $this->size;
   }
 }

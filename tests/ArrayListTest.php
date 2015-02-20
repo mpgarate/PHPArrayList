@@ -2,10 +2,10 @@
 
 class StackTest extends PHPUnit_Framework_TestCase
 {
-  public function testExample()
+  public function testConstructEmptyList()
     {
       $list = new ArrayList;
-      $this->assertEquals($list->world(), "Hello world");
+      $this->assertEquals($list->size(), 0);
     }
   }
 ?>
