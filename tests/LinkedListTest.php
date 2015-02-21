@@ -1,17 +1,17 @@
 <?php
 
-class ArrayListTest extends PHPUnit_Framework_TestCase
+class LinkedListTest extends PHPUnit_Framework_TestCase
 {
   public function testConstructEmptyList()
     {
-      $list = new ArrayList;
+      $list = new LinkedList;
 
       $this->assertEquals($list->size(), 0);
     }
 
   public function testAddAnItem()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
     $list->add("Example message");
 
     $this->assertEquals(1, $list->size());
@@ -20,7 +20,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testAddTwoItems()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
     $list->add("First example message");
     $list->add("Second example message");
 
@@ -31,7 +31,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testAddThreeItems()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
     $list->add("First example message");
     $list->add("Second example message");
     $list->add("Third example message");
@@ -44,7 +44,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testAddFourItems()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
     $list->add("First example message");
     $list->add("Second example message");
     $list->add("Third example message");
@@ -59,7 +59,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testAddTenItems()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
 
     for ($i = 0; $i < 10; $i++) {
       $list->add("Example message " . $i);
@@ -73,7 +73,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testAddElevenItems()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
 
     for ($i = 0; $i < 11; $i++) {
       $list->add("Example message " . $i);
@@ -87,7 +87,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testAdd10kItems()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
 
     for ($i = 0; $i < 10000; $i++) {
       $list->add("Example message " . $i);
@@ -102,7 +102,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testClearList()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
     $list->add("First example message");
     $list->add("Second example message");
     $list->add("Third example message");
@@ -115,7 +115,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testRemoveAnItem()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
     $list->add("First example message");
     $list->add("Second example message");
     $list->add("Third example message");
@@ -130,7 +130,7 @@ class ArrayListTest extends PHPUnit_Framework_TestCase
 
   public function testRemoveManyItems()
   {
-    $list = new ArrayList;
+    $list = new LinkedList;
 
     for ($i = 0; $i < 50; $i++) {
       $list->add("Example message " . $i);
