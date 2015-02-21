@@ -43,13 +43,11 @@ class ArrayList
       for ($i = $index; $i < $this->size - 1; $i++) {
         $this->elements[$i] = $this->elements[$i + 1];
       }
-
-      $this->size--;
-      $this->elements[$this->size - 1] = NULL;
-
-      return $oldElement;
     }
 
+    $this->size--;
+    $this->elements[$this->size] = NULL;
+    return $oldElement;
   }
 
   public function clear()

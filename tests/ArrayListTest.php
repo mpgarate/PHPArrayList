@@ -85,6 +85,21 @@ class StackTest extends PHPUnit_Framework_TestCase
     $this->assertEquals("Example message 10", $list->get(10));
   }
 
+  public function testAdd10kItems()
+  {
+    $list = new ArrayList;
+
+    for ($i = 0; $i < 10000; $i++) {
+      $list->add("Example message " . $i);
+    }
+
+    $this->assertEquals(10000, $list->size());
+    $this->assertEquals("Example message 0", $list->get(0));
+    $this->assertEquals("Example message 3", $list->get(3));
+    $this->assertEquals("Example message 300", $list->get(300));
+    $this->assertEquals("Example message 9999", $list->get(9999));
+  }
+
   public function testClearList()
   {
     $list = new ArrayList;
@@ -110,6 +125,26 @@ class StackTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(2, $list->size());
     $this->assertEquals("First example message", $list->get(0));
     $this->assertEquals("Second example message", $message);
-    $this->assertEquals("Third example message", $list->get(2));
+    $this->assertEquals("Third example message", $list->get(1));
+  }
+
+  public function testRemoveManyItems()
+  {
+    $list = new ArrayList;
+
+    for ($i = 0; $i < 50; $i++) {
+      $list->add("Example message " . $i);
+    }
+
+    $list->remove(3);
+    $list->remove(25);
+    $list->remove(47);
+    $list->add("Example message 999");
+
+    $this->assertEquals(48, $list->size());
+    $this->assertEquals("Example message 4", $list->get(3));
+    $this->assertEquals("Example message 27", $list->get(25));
+    $this->assertEquals("Example message 48", $list->get(46));
+    $this->assertEquals("Example message 999", $list->get(47));
   }
 }
