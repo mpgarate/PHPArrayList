@@ -33,7 +33,7 @@ class ListSpeedComparisonTest extends PHPUnit_Framework_TestCase
       $arrayListTimeElapsed = $arrayListTimeEnd - $arrayListTimeStart;
 
       echo "\n";
-      echo "ArrayList vs LinkedList for i->10,000 get(i)";
+      echo "ArrayList vs LinkedList for i->10,000 get(i)" . "\n";
       echo "array: $arrayListTimeElapsed" . "\n";
       echo "linked: $linkedListTimeElapsed" . "\n";
     }
